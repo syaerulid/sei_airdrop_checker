@@ -44,7 +44,7 @@ def main():
         if st.button("Check Eligibility"):
             response_json = check_eligibility(address)
             
-            if response_json.get('message') == 'Internal server error':
+            if response_json.get('message'):
                 st.write('currently SEI Server is down, check again later')
             else:
                 if response_json.get("eligible"):
