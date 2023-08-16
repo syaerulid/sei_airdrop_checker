@@ -47,7 +47,7 @@ def main():
             if 'Internal server error' in response_json.get('message'):
                 st.write('Currently SEI Server is Down, check again later')
             else:
-                if "true" in response_json.get("eligible"):
+                if response_json.get("eligible") is True:
                     eligibleAmount = response_json.get("eligibleAmount")
                     st.write("Eligible Amount (usei):", eligibleAmount)
 
