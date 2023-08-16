@@ -44,10 +44,10 @@ def main():
         if st.button("Check Eligibility"):
             response_json = check_eligibility(address)
             
-            if response_json.get('message'):
-                st.write('currently SEI Server is down, check again later')
+            if 'Internal server error' in response_json.get('message'):
+                st.write('Currently SEI Server is Down, check again later')
             else:
-                if response_json.get("eligible"):
+                if "true" in response_json.get("eligible"):
                     eligibleAmount = response_json.get("eligibleAmount")
                     st.write("Eligible Amount (usei):", eligibleAmount)
 
@@ -63,7 +63,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 # In[ ]:
 
