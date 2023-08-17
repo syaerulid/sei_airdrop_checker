@@ -42,15 +42,5 @@ def main():
 if __name__ == "__main__":
     main()
 
-                    sei = sei_amount(number_usei)
-                    st.write("Eligible Amount (sei):", sei)
-                else:
-                    st.write("You are not Ahoy.")
-    else:
-        st.write("Invalid address or network.")
-
-if __name__ == "__main__":
-    main()
-
 
 
