@@ -22,16 +22,25 @@ def main():
     if address and address.startswith('sei'):
         if st.button("Check Eligibility"):
             response_json = check_eligibility(address)
-            
+
             if response_json.get('message') == 'Internal server is down':
                 st.write('Currently SEI Server is Down, check again later')
-            else:
-                if response_json.get("eligible"):
-                    eligibleAmount = response_json.get("eligibleAmount")
-                    st.write("Eligible Amount (usei):", eligibleAmount)
+            elif response_json.get("eligible"):
+                eligibleAmount = response_json.get("eligibleAmount")
+                st.write("Eligible Amount (usei):", eligibleAmount)
 
-                    number_usei = int(re.search(r'\d+', eligibleAmount).group())
-                    st.write("Numeric Amount (usei):", number_usei)
+                number_usei = int(re.search(r'\d+', eligibleAmount).group())
+                st.write("Numeric Amount (usei):", number_usei)
+
+                sei = sei_amount(number_usei)
+                st.write("Eligible Amount (sei):", sei)
+            else:
+                st.write("You are not Ahoy.")
+    else:
+        st.write("Invalid address or network.")
+
+if __name__ == "__main__":
+    main()
 
                     sei = sei_amount(number_usei)
                     st.write("Eligible Amount (sei):", sei)
